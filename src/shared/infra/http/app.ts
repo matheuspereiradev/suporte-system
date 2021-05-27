@@ -4,6 +4,7 @@ import cors from 'cors';
 import CreateConnection from '@shared/infra/typeorm/index';
 import { routes } from '@shared/infra/http/routes/index.routes';
 import 'reflect-metadata';
+import Erro from '@shared/errors/AppError';
 import {errors} from 'celebrate'
 import path from 'path';
 
@@ -20,7 +21,7 @@ app.use('/files',express.static(path.resolve(__dirname,"..","temp")));
 app.use(routes)
 
 app.use(errors())
-/*app.use(
+app.use(
     (err:Error, request:Request, response:Response, next:NextFunction)=>{
 
     if(err instanceof Erro){
@@ -37,6 +38,6 @@ app.use(errors())
         "error":"internal server error"
     });
 
-})*/
+})
 
 export {app}
