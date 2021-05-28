@@ -1,3 +1,4 @@
+import { Company } from "@modules/company/infra/typeorm/entities/Company";
 import { User } from "@modules/user/infra/typeorm/entities/User";
 import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
 import { CategoryTicket } from "./CategoryTicket";
@@ -36,6 +37,10 @@ class Ticket{
 
     @Column({name:"id_category"})
     idCategory:number;
+
+    @OneToOne(type=>Company,company=>company.id)
+    @JoinColumn({name:"id_company"})
+    company:Company
 
     @Column({name:"id_company"})
     idCompany:string;

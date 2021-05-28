@@ -12,12 +12,12 @@ class TicketRepository implements ITicketRepository{
     }
 
     public async findByID(id:string):Promise<Ticket>{
-        const all = await this.ormRepository.findOne({relations: ["requester","status","category"],where: {id}});
+        const all = await this.ormRepository.findOne({relations: ["requester","status","category","company"],where: {id}});
         return all;
     };
 
     public async findAll():Promise<Array<Ticket>>{
-        const all = await this.ormRepository.find({relations: ["requester","status","category"]});
+        const all = await this.ormRepository.find({relations: ["requester","status","category","company"]});
         return all;
     }
 
