@@ -14,7 +14,7 @@ export class crateTableTicket1622219517764 implements MigrationInterface {
                     generationStrategy: 'increment'
                 },
                 {
-                    name:"titulo",
+                    name:"title",
                     type:"varchar",
                     length:"100"
                 },
