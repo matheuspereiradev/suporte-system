@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import Erro from '@shared/errors/AppError';
-import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
+import { StatusTicketRepository } from '@modules/ticket/infra/typeorm/repositories/StatusTicketRepository';
 
 class StatusTicketController {
 
     async show(request: Request, response: Response) {
 
-        const userRepository = new UserRepository();
-        const all = await userRepository.findAll();
+        const statusTicketRepository = new StatusTicketRepository();
+        const all = await statusTicketRepository.findAll();
 
         return response.status(200).json(all);
     }
