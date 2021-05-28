@@ -1,7 +1,7 @@
 import {Column, Entity, PrimaryColumn} from "typeorm";
 
-@Entity("tb_ticket_status")
-class StatusTicket{
+@Entity("tb_ticket_category")
+class CategoryTicket{
 
     @PrimaryColumn()
     readonly id:string;
@@ -11,4 +11,4 @@ class StatusTicket{
     
 }
 
-export{ StatusTicket };
+export{ CategoryTicket };
