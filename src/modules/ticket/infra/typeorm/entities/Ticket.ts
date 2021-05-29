@@ -1,13 +1,14 @@
 import { Company } from "@modules/company/infra/typeorm/entities/Company";
 import { User } from "@modules/user/infra/typeorm/entities/User";
-import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
+import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
 import { CategoryTicket } from "./CategoryTicket";
+import { Interaction } from "./Interaction";
 import { StatusTicket } from "./StatusTicket";
 
 @Entity("tb_ticket")
 class Ticket{
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     readonly id:string;
 
     @Column()
@@ -40,10 +41,13 @@ class Ticket{
 
     @OneToOne(type=>Company,company=>company.id)
     @JoinColumn({name:"id_company"})
-    company:Company
+    company:Company;
 
     @Column({name:"id_company"})
     idCompany:string;
+
+    @OneToMany(type=>Interaction,interaction=>interaction.ticket)
+    interactions:Interaction[];
 
     @CreateDateColumn()
     created_at:string;

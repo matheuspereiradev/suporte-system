@@ -20,7 +20,8 @@ export class CreateTabeleInteraction1622249203157 implements MigrationInterface 
                 {
                     name:"file",
                     type:"varchar",
-                    length:"50"
+                    length:"50",
+                    isNullable:true
                 },
                 {
                     name:"id_ticket",

@@ -1,9 +1,9 @@
-import {Column, Entity, PrimaryColumn} from "typeorm";
+import {Column, Entity, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity("tb_ticket_category")
 class CategoryTicket{
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     readonly id:string;
 
     @Column()
