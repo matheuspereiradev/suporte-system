@@ -16,10 +16,11 @@ class Interaction{
     file:string;
 
     @ManyToOne(type => Ticket, ticket => ticket.interactions)
+    @JoinColumn({name:"id_ticket"})
     ticket: Ticket;
 
-    @Column({name:"id_ticket"})
-    idTicket:number;
+    // @Column({name:"id_ticket"})
+    // idTicket:number;
 
     @OneToOne(type=>User,user=>user.id)
     @JoinColumn({name:"id_sender"})
