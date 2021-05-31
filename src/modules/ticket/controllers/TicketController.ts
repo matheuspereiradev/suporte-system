@@ -5,7 +5,7 @@ import { container } from 'tsyringe';
 import {CreateTicketService} from '@modules/ticket/services/CreateTicketService';
 import configCompany from '@config/company'
 import { Ticket } from '../infra/typeorm/entities/Ticket';
-import { DeleteTicketService } from '../services/DeleteInteraction';
+import { DeleteTicketService } from '../services/DeleteTicketService';
 
 class TicketController {
 

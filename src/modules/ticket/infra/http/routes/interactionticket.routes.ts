@@ -7,5 +7,6 @@ const routesInteractionTicket = Router();
 const interactionTicketController = new InteractionController();
 
 routesInteractionTicket.post('/',ensureAuthenticated,interactionTicketController.create);
+routesInteractionTicket.delete('/:id',ensureAuthenticated,interactionTicketController.delete);
 
 export {routesInteractionTicket};

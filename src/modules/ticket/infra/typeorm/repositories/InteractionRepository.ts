@@ -21,6 +21,18 @@ class InteractionRepository implements IInteractionRepository{
         return interaction;
     };
 
+    public async findByID(id:string):Promise<Interaction>{
+        const all = await this.ormRepository.findOne({where: {id}});
+        return all;
+    };
+
+    public async delete(id:string):Promise<Interaction>{
+        const interaction = await this.ormRepository.findOne({where:{id}})
+        await this.ormRepository.softDelete(id);
+        
+        return interaction;
+    }
+
     
 }
 
