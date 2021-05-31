@@ -3,4 +3,5 @@ export default interface ICreateInteractionDTO{
     file:string;
     idTicket:number;
     idSender:string;
+    isPrivate:boolean;
 }

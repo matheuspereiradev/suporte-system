@@ -31,6 +31,9 @@ class Interaction{
     @Column({name:"id_sender"})
     idSender:string;
 
+    @Column({name:"private"})
+    isPrivate:boolean;
+
     @CreateDateColumn()
     created_at:string;
 
