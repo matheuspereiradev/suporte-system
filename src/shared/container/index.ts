@@ -8,8 +8,11 @@ import IHashProvider from '@modules/user/infra/providers/HashProvider/models/IHa
 import bcryptHashProvider from '@modules/user/infra/providers/HashProvider/implementation/bcryptHashProvider';
 import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
 import NodeMeiler from '@shared/infra/providers/mail/implementations/nodeMailerProvider';
+import IInteractionRepository from '@modules/ticket/IRepositories/IInteractionRepository';
+import { InteractionRepository } from '@modules/ticket/infra/typeorm/repositories/InteractionRepository';
 
 container.registerSingleton<IHashProvider>('HashProvider', bcryptHashProvider);
 container.registerSingleton<ISendMail>('SendMail',NodeMeiler);
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 container.registerSingleton<ITicketRepository>('TicketRepository', TicketRepository);
+container.registerSingleton<IInteractionRepository>('InteractionRepository', InteractionRepository);
