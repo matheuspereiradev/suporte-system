@@ -52,6 +52,12 @@ class TicketRepository implements ITicketRepository{
         return ticket;
     }
 
+    public async delete(idTicket:number):Promise<Ticket>{
+        const ticket = await this.ormRepository.findOne({where:{id:idTicket}})
+        await this.ormRepository.softDelete(idTicket);
+        
+        return ticket;
+    }
 
     
 }

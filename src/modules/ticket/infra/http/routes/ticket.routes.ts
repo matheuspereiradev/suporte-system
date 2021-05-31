@@ -11,6 +11,7 @@ const ticketController = new TicketController();
 routesTicket.get('/',ensureAuthenticated,ticketController.show);
 routesTicket.get('/find/:id',ensureAuthenticated,ticketController.find);
 routesTicket.post('/',ensureAuthenticated,ticketController.create);
+routesTicket.delete('/:id',ensureAuthenticated,ticketController.delete);
 
 routesTicket.use('/status',routesStatusTicket);
 routesTicket.use('/category',routesCategoryTicket);

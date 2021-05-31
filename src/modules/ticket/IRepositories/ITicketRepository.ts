@@ -8,4 +8,5 @@ export default interface ITicketRepository{
     findByIDForUser(id:number,company:number):Promise<Ticket>;
     create(data:ICreateTicketDTO):Promise<Ticket>;
     setStatus(idTicket:number,statusCode:number):Promise<Ticket>;
+    delete(idTicket:number):Promise<Ticket>;
 }

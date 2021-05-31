@@ -5,6 +5,7 @@ import { container } from 'tsyringe';
 import {CreateTicketService} from '@modules/ticket/services/CreateTicketService';
 import configCompany from '@config/company'
 import { Ticket } from '../infra/typeorm/entities/Ticket';
+import { DeleteTicketService } from '../services/DeleteInteraction';
 
 class TicketController {
 
@@ -47,6 +48,17 @@ class TicketController {
         const ticket = await createTicketService.execute({title,description,idCategory:category,idCompany:company,idRequester:request.user.id});
 
         return response.status(201).json(ticket);
+    }
+
+    async delete(request: Request, response: Response) {
+        
+        const {id} = request.params;
+
+        const deleteTicketService = container.resolve(DeleteTicketService);
+
+        const ticket = await deleteTicketService.execute(Number(id));
+
+        return response.status(200).json(ticket);
     }
     
 };
