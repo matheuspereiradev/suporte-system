@@ -45,7 +45,8 @@ class AuthUserService {
         const token = sign(
             {
                 email:user.email,
-                name:user.name
+                name:user.name,
+                company:user.idCompany
             }, secret, {
                 subject: user.id,
                 expiresIn: expireIn,

@@ -1,3 +1,4 @@
+import { Company } from "@modules/company/infra/typeorm/entities/Company";
 import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
 import {v4 as uuid} from 'uuid';
 
@@ -21,6 +22,13 @@ class User{
 
     @Column()
     login:string;
+
+    @OneToOne(type=>Company,company=>company.id)
+    @JoinColumn({name:"id_company"})
+    company:Company;
+
+    @Column({name:"id_company"})
+    idCompany:number;
 
     @Column()
     gender:string;
