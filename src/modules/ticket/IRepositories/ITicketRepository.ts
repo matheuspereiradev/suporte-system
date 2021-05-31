@@ -3,8 +3,9 @@ import ICreateTicketDTO from '@modules/ticket/dtos/ICreateTicketDTO'
 
 export default interface ITicketRepository{
     findAll():Promise<Array<Ticket>>;
-    findByID(id:string):Promise<Ticket>;
+    findByID(id:number):Promise<Ticket>;
     findAllTicketsCompany(company:number):Promise<Array<Ticket>>;
-    findByIDWithCompany(id:string,company:number):Promise<Ticket>;
+    findByIDWithCompany(id:number,company:number):Promise<Ticket>;
     create(data:ICreateTicketDTO):Promise<Ticket>;
+    setStatus(idTicket:number,statusCode:number):Promise<Ticket>;
 }

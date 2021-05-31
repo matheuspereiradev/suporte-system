@@ -11,7 +11,7 @@ class TicketRepository implements ITicketRepository{
         this.ormRepository = getRepository(Ticket)
     }
 
-    public async findByID(id:string):Promise<Ticket>{
+    public async findByID(id:number):Promise<Ticket>{
         const all = await this.ormRepository.findOne({relations: ["requester","status","category","company","interactions"],where: {id}});
         return all;
     };
@@ -21,7 +21,7 @@ class TicketRepository implements ITicketRepository{
         return all;
     }
 
-    public async findByIDWithCompany(id:string,company:number):Promise<Ticket>{
+    public async findByIDWithCompany(id:number,company:number):Promise<Ticket>{
         const all = await this.ormRepository.findOne({relations: ["requester","status","category","company","interactions"],where: {id,idCompany:company}});
         return all;
     };
@@ -40,6 +40,18 @@ class TicketRepository implements ITicketRepository{
 
         return ticket;
     }
+
+    public async setStatus(idTicket:number,statusCode:number):Promise<Ticket>{
+
+        const ticket = await this.ormRepository.findOne({where:{id:idTicket}});
+
+        ticket.idStatus = statusCode;
+
+        await this.ormRepository.save(ticket);
+
+        return ticket;
+    }
+
 
     
 }
