@@ -1,9 +1,7 @@
-
 import { getRepository, Repository } from 'typeorm';
 import ITicketRepository from '@modules/ticket/IRepositories/ITicketRepository';
 import { Ticket } from '../entities/Ticket';
-import ICreateInteractionDTO from '@modules/ticket/dtos/ICreatePropertyDTO';
-import { Interaction } from '../entities/Interaction';
+import ICreateTicketDTO from '@modules/ticket/dtos/ICreateTicketDTO';
 
 class TicketRepository implements ITicketRepository{
 
@@ -21,6 +19,15 @@ class TicketRepository implements ITicketRepository{
     public async findAll():Promise<Array<Ticket>>{
         const all = await this.ormRepository.find({relations: ["requester","status","category","company"]});
         return all;
+    }
+
+    public async create(data:ICreateTicketDTO):Promise<Ticket>{
+
+        const ticket = this.ormRepository.create(data);
+
+        await this.ormRepository.save(ticket);
+
+        return ticket;
     }
 
     

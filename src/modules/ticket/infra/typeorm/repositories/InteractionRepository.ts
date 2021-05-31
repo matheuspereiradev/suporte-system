@@ -2,7 +2,7 @@
 import { getRepository, Repository } from 'typeorm';
 import IInteractionRepository from '@modules/ticket/IRepositories/IInteractionRepository';
 import { Interaction } from '../entities/Interaction';
-import ICreateInteractionDTO from '@modules/ticket/dtos/ICreatePropertyDTO';
+import ICreateInteractionDTO from '@modules/ticket/dtos/ICreateInteractionDTO';
 
 class InteractionRepository implements IInteractionRepository{
 

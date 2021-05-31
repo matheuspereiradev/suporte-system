@@ -1,6 +1,6 @@
 import Erro from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import ICreateInteractionDTO from '../dtos/ICreatePropertyDTO';
+import ICreateInteractionDTO from '../dtos/ICreateInteractionDTO';
 import { Interaction } from '../infra/typeorm/entities/Interaction';
 import IInteractionRepository from '../IRepositories/IInteractionRepository';
 
@@ -18,8 +18,6 @@ class CreateInteractionService {
         
         return interaction;
     }
-
-   
 
 };
 

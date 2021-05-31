@@ -44,7 +44,7 @@ class Ticket{
     company:Company;
 
     @Column({name:"id_company"})
-    idCompany:string;
+    idCompany:number;
 
     @OneToMany(type=>Interaction,interaction=>interaction.ticket)
     interactions:Interaction[];

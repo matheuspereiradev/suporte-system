@@ -4,6 +4,7 @@ declare namespace Express{
             id:string;
             email:string;
             name:string;
+            company:number;
         }
     }
 }
