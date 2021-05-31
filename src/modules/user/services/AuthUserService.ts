@@ -4,7 +4,6 @@ import Erro from '@shared/errors/AppError';
 import { User } from '@modules/user/infra/typeorm/entities/User';
 import { inject, injectable } from 'tsyringe';
 import IUserRepository from '../IRepositories/IUserRepository';
-import BCryptHashProvider from '../infra/providers/HashProvider/implementation/bcryptHashProvider';
 import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
 
 interface Auth {
