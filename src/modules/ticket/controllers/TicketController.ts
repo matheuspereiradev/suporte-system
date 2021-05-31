@@ -11,6 +11,14 @@ class TicketController {
 
         return response.status(200).json(all);
     }
+
+    async find(request: Request, response: Response){
+        const id = request.params.id;
+        const ticketRepository = new TicketRepository();
+        const all = await ticketRepository.findByID(id);
+
+        return response.status(200).json(all);
+    }
     
 };
 

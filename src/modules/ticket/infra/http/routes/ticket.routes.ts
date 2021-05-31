@@ -7,6 +7,7 @@ const routesTicket = Router();
 const ticketController = new TicketController();
 
 routesTicket.get('/',ticketController.show);
+routesTicket.get('/find/:id',ticketController.find);
 routesTicket.use('/status',routesStatusTicket);
 routesTicket.use('/category',routesCategoryTicket);
 

@@ -17,7 +17,7 @@ class TicketRepository implements ITicketRepository{
     };
 
     public async findAll():Promise<Array<Ticket>>{
-        const all = await this.ormRepository.find({relations: ["requester","status","category","company","interactions"]});
+        const all = await this.ormRepository.find({relations: ["requester","status","category","company"]});
         return all;
     }
 
