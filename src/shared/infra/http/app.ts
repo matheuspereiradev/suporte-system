@@ -8,7 +8,7 @@ import Erro from '@shared/errors/AppError';
 import {errors} from 'celebrate'
 import path from 'path';
 
-//import '@shared/container'
+import '@shared/container'
 
 const app = express();
 
