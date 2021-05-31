@@ -2,6 +2,8 @@
 import { getRepository, Repository } from 'typeorm';
 import ITicketRepository from '@modules/ticket/IRepositories/ITicketRepository';
 import { Ticket } from '../entities/Ticket';
+import ICreateInteractionDTO from '@modules/ticket/dtos/ICreatePropertyDTO';
+import { Interaction } from '../entities/Interaction';
 
 class TicketRepository implements ITicketRepository{
 
