@@ -8,6 +8,7 @@ import configCompany from '@config/company'
 import ITicketRepository from '../IRepositories/ITicketRepository';
 import IUserRepository from '@modules/user/IRepositories/IUserRepository';
 import { Ticket } from '../infra/typeorm/entities/Ticket';
+import IStatusTicketRepository from '../IRepositories/IStatusTicketRepository';
 
 @injectable()
 class SetTicketStatus {
@@ -20,7 +21,11 @@ class SetTicketStatus {
         private ticketRepository:ITicketRepository,
 
         @inject('UserRepository')
-        private userRepository:IUserRepository
+        private userRepository:IUserRepository,
+
+        @inject('StatusTicketRepository')
+        private statusTicketRepository:IStatusTicketRepository,
+        
     ){}
 
     public async execute(idTicket:number, status:number, idSender:string):Promise<any> {
@@ -29,6 +34,8 @@ class SetTicketStatus {
 
         if((status)&&(user.idCompany===configCompany.admin.adminCompany)){
             await this.ticketRepository.setStatus(idTicket,status)
+            await this.createInteraction(idTicket,idSender,status);
+            
         }else{
             const ticket = await this.ticketRepository.findByID(idTicket);
             
@@ -37,10 +44,12 @@ class SetTicketStatus {
                 //e receber uma mensagem de um usuário da empresa
                 if(user.idCompany === configCompany.admin.adminCompany){
                     await this.setStatusOpen(idTicket)
+                    await this.createInteraction(idTicket,idSender,status);
                 }
             }else{ //se o ticket tiver qualquer outro status
                 if(user.idCompany !== configCompany.admin.adminCompany){
-                    await this.setStatusOpen(idTicket)
+                    await this.setStatusOpen(idTicket);
+                    await this.createInteraction(idTicket,idSender,status);
                 }
             }
         }
@@ -48,7 +57,13 @@ class SetTicketStatus {
     }
 
     public async setStatusOpen(idTicket:number){
-        this.ticketRepository.setStatus(idTicket,configStatus.statusCode.open)
+        this.ticketRepository.setStatus(idTicket,configStatus.statusCode.open);
+    }
+
+    public async createInteraction(idTicket:number,idSender:string,idStatus:number){
+        const status = await this.statusTicketRepository.findByID(idStatus);
+
+        await this.interactionRepository.create({isPrivate:true,idTicket,idSender,text:"Alterou o status para "+status.name,file:null})
     }
 
 };

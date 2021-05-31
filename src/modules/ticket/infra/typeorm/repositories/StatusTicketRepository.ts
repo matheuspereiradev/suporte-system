@@ -12,7 +12,7 @@ class StatusTicketRepository implements IStatusTicketRepository{
         this.ormRepository = getRepository(StatusTicket)
     }
 
-    public async findByID(id:string):Promise<StatusTicket>{
+    public async findByID(id:number):Promise<StatusTicket>{
         const all = await this.ormRepository.findOne({where: {id}});
         return all;
     };

@@ -2,5 +2,5 @@ import { StatusTicket } from '@modules/ticket/infra/typeorm/entities/StatusTicke
 
 export default interface IStatusTicketRepository{
     findAll():Promise<Array<StatusTicket>>;
-    findByID(id:string):Promise<StatusTicket>;
+    findByID(id:number):Promise<StatusTicket>;
 }
