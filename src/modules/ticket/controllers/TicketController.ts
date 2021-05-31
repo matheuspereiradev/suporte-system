@@ -16,7 +16,7 @@ class TicketController {
         if(request.user.company===configCompany.admin.adminCompany){
             all = await ticketRepository.findAll();
         }else{
-            all = await ticketRepository.findAllTicketsCompany(request.user.company);
+            all = await ticketRepository.findAllForUser(request.user.company);
             console.log(request.user.company)
         }
         
@@ -33,7 +33,7 @@ class TicketController {
         if(request.user.company===configCompany.admin.adminCompany){
             all = await ticketRepository.findByID(Number(id));
         }else{
-            all = await ticketRepository.findByIDWithCompany(Number(id),request.user.company);
+            all = await ticketRepository.findByIDForUser(Number(id),request.user.company);
         }
 
         return response.status(200).json(all);

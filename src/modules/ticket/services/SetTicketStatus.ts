@@ -28,7 +28,7 @@ class SetTicketStatus {
         const user = await this.userRepository.findByID(idSender)
 
         if((status)&&(user.idCompany===configCompany.admin.adminCompany)){
-            this.ticketRepository.setStatus(idTicket,status)
+            await this.ticketRepository.setStatus(idTicket,status)
         }else{
             const ticket = await this.ticketRepository.findByID(idTicket);
             
