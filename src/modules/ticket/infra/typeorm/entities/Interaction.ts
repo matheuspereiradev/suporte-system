@@ -22,7 +22,9 @@ class Interaction{
     @Column({name:"id_ticket"})
     idTicket:number;
 
-    @OneToOne(type=>User,user=>user.id)
+    @OneToOne(type=>User,user=>user.id,{
+        eager:true
+    })
     @JoinColumn({name:"id_sender"})
     sender:User
 
