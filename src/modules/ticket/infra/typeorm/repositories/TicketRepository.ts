@@ -21,6 +21,17 @@ class TicketRepository implements ITicketRepository{
         return all;
     }
 
+    public async findByIDWithCompany(id:string,company:number):Promise<Ticket>{
+        const all = await this.ormRepository.findOne({relations: ["requester","status","category","company","interactions"],where: {id,idCompany:company}});
+        return all;
+    };
+
+    public async findAllTicketsCompany(company:number):Promise<Array<Ticket>>{
+        console.log(company)
+        const all = await this.ormRepository.find({relations: ["requester","status","category","company"],where:{idCompany:company}});
+        return all;
+    }
+
     public async create(data:ICreateTicketDTO):Promise<Ticket>{
 
         const ticket = this.ormRepository.create(data);

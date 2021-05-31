@@ -2,22 +2,39 @@ import { Request, Response } from 'express';
 import Erro from '@shared/errors/AppError';
 import { TicketRepository } from '@modules/ticket/infra/typeorm/repositories/TicketRepository';
 import { container } from 'tsyringe';
-import {CreateTicketService} from '@modules/ticket/services/CreateTicketService'
+import {CreateTicketService} from '@modules/ticket/services/CreateTicketService';
+import configCompany from '@config/company'
+import { Ticket } from '../infra/typeorm/entities/Ticket';
 
 class TicketController {
 
     async show(request: Request, response: Response) {
+        let all:Array<Ticket>;
 
         const ticketRepository = new TicketRepository();
-        const all = await ticketRepository.findAll();
+        
+        if(request.user.company===configCompany.admin.adminCompany){
+            all = await ticketRepository.findAll();
+        }else{
+            all = await ticketRepository.findAllTicketsCompany(request.user.company);
+            console.log(request.user.company)
+        }
+        
 
         return response.status(200).json(all);
     }
 
     async find(request: Request, response: Response){
+        let all:Ticket;
+
         const id = request.params.id;
         const ticketRepository = new TicketRepository();
-        const all = await ticketRepository.findByID(id);
+
+        if(request.user.company===configCompany.admin.adminCompany){
+            all = await ticketRepository.findByID(id);
+        }else{
+            all = await ticketRepository.findByIDWithCompany(id,request.user.company);
+        }
 
         return response.status(200).json(all);
     }
