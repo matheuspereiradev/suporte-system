@@ -46,7 +46,8 @@ class AuthUserService {
             {
                 email:user.email,
                 name:user.name,
-                company:user.idCompany
+                company:user.idCompany,
+                isAdmin:user.admin
             }, secret, {
                 subject: user.id,
                 expiresIn: expireIn,

@@ -7,6 +7,7 @@ import { Company } from '@modules/company/infra/typeorm/entities/Company';
 interface TokenPayload{
     email:string,
     name:string,
+    isAdmin:boolean,
     company:number,
     iat:number,
     exp:number,
@@ -23,11 +24,12 @@ export default function ensureAuthenticated(request:Request,response:Response,ne
     const [,token] = authHeader.split(' ');
     const decode = verify(token,authConfig.jwt.secret);
         
-    const {sub,email,name,company} = decode as TokenPayload;
+    const {sub,email,name,isAdmin,company} = decode as TokenPayload;
 
     request.user = {
         email:email,
         name:name,
+        isAdmin:isAdmin,
         company:company,
         id:sub
     }
