@@ -33,6 +33,9 @@ class User{
     @Column()
     gender:string;
 
+    @Column()
+    admin:boolean;
+
     @CreateDateColumn()
     created_at:Date;
 
