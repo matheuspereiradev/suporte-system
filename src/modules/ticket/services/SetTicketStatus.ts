@@ -32,7 +32,7 @@ class SetTicketStatus {
 
         const user = await this.userRepository.findByID(idSender)
 
-        if((status)&&(user.idCompany===configCompany.admin.adminCompany)){
+        if((status)&&(user.admin)){
             await this.ticketRepository.setStatus(idTicket,status)
             await this.createInteraction(idTicket,idSender,status);
             
@@ -42,12 +42,12 @@ class SetTicketStatus {
             //se oticket for novo
             if(ticket.idStatus === configStatus.statusCode.new){
                 //e receber uma mensagem de um usuário da empresa
-                if(user.idCompany === configCompany.admin.adminCompany){
+                if(user.admin){
                     await this.setStatusOpen(idTicket)
                     await this.createInteraction(idTicket,idSender,status);
                 }
             }else{ //se o ticket tiver qualquer outro status
-                if(user.idCompany !== configCompany.admin.adminCompany){
+                if(!user.admin){
                     await this.setStatusOpen(idTicket);
                     await this.createInteraction(idTicket,idSender,status);
                 }
