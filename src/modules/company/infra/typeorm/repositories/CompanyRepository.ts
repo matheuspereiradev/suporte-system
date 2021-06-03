@@ -21,6 +21,12 @@ class CompanyRepository implements ICompanyRepository{
         return all;
     }
 
+    public async findUserCompanies(company:number):Promise<Array<Company>>{
+        const all = await this.ormRepository.find({where:{id:company}});
+        return all;
+    }
+
+
     
 }
 
