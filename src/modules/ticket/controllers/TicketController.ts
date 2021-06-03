@@ -18,7 +18,6 @@ class TicketController {
             all = await ticketRepository.findAll();
         }else{
             all = await ticketRepository.findAllForUser(request.user.company);
-            console.log(request.user.company)
         }
         
 
