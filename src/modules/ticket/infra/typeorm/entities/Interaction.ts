@@ -1,5 +1,5 @@
 import { User } from "@modules/user/infra/typeorm/entities/User";
-import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn} from "typeorm";
+import {AfterLoad, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn} from "typeorm";
 import {v4 as uuid} from 'uuid';
 import { Ticket } from "./Ticket";
 

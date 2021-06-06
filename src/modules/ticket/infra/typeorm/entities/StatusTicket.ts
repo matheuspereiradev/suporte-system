@@ -8,6 +8,9 @@ class StatusTicket{
 
     @Column()
     name:string;
+
+    @Column()
+    icon:string
     
 }
 
