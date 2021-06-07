@@ -23,11 +23,20 @@ class TicketRepository implements ITicketRepository{
 
     public async findByIDForUser(id:number,company:number):Promise<Ticket>{
         const all = await this.ormRepository.findOne({relations: ["requester","status","category","company","interactions"],where: {id,idCompany:company}});
+        
+        const interactionsWithOutPrivateMessages = all.interactions.filter(msg => msg.isPrivate !== true) ;
+        
+        console.log(all.interactions.length)
+        all.interactions=interactionsWithOutPrivateMessages;
+
+        console.log(interactionsWithOutPrivateMessages.length)
         return all;
     };
 
     public async findAllForUser(company:number):Promise<Array<Ticket>>{
         const all = await this.ormRepository.find({relations: ["requester","status","category","company"],where:{idCompany:company}});
+
+
         return all;
     }
 

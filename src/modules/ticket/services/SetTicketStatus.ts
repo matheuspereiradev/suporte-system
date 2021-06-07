@@ -44,12 +44,13 @@ class SetTicketStatus {
                 //e receber uma mensagem de um usuário da empresa
                 if(user.admin){
                     await this.setStatusOpen(idTicket)
-                    await this.createInteraction(idTicket,idSender,status);
+                    await this.createInteraction(idTicket,idSender,configStatus.statusCode.open);
                 }
             }else{ //se o ticket tiver qualquer outro status
                 if(!user.admin){
+                    //e receber um msg do cliente o status vai para aberto
                     await this.setStatusOpen(idTicket);
-                    await this.createInteraction(idTicket,idSender,status);
+                    await this.createInteraction(idTicket,idSender,configStatus.statusCode.open);
                 }
             }
         }

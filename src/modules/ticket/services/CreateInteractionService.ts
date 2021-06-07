@@ -16,11 +16,9 @@ class CreateInteractionService {
     ){}
 
     public async execute(data:ICreateInteractionDTO, status:number=undefined):Promise<Interaction> {
-
+        
         const interaction = await this.interactionRepository.create(data);
-
         const ticketStatus = container.resolve(SetTicketStatus);
-
         await ticketStatus.execute(data.idTicket, status, data.idSender);
         
         return interaction;
