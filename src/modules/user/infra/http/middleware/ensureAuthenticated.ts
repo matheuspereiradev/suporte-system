@@ -20,9 +20,11 @@ export default function ensureAuthenticated(request:Request,response:Response,ne
     if(!authHeader){
         throw new Erro("JWT token not definided",1005,403);
     }
-    
+
     const [,token] = authHeader.split(' ');
+    
     const decode = verify(token,authConfig.jwt.secret);
+
         
     const {sub,email,name,isAdmin,company} = decode as TokenPayload;
 

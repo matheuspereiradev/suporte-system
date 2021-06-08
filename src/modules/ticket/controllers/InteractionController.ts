@@ -9,11 +9,11 @@ class InteractionController {
 
     async create(request: Request, response: Response) {
 
-        const {text,file,ticket,isPrivate, status} = request.body;
+        const {text,ticket,isPrivate, status} = request.body;
 
         const createInteractionService = container.resolve(CreateInteractionService);
 
-        const interaction = await createInteractionService.execute({text,file,idTicket:ticket,idSender:request.user.id,isPrivate},status);
+        const interaction = await createInteractionService.execute({text,file:request.file.filename,idTicket:ticket,idSender:request.user.id,isPrivate},status);
 
         return response.status(201).json(interaction);
     }

@@ -26,10 +26,8 @@ class TicketRepository implements ITicketRepository{
         
         const interactionsWithOutPrivateMessages = all.interactions.filter(msg => msg.isPrivate !== true) ;
         
-        console.log(all.interactions.length)
         all.interactions=interactionsWithOutPrivateMessages;
 
-        console.log(interactionsWithOutPrivateMessages.length)
         return all;
     };
 

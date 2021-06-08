@@ -47,7 +47,7 @@ class SetTicketStatus {
                     await this.createInteraction(idTicket,idSender,configStatus.statusCode.open);
                 }
             }else{ //se o ticket tiver qualquer outro status
-                if(!user.admin){
+                if((!user.admin)&&(ticket.idStatus !== configStatus.statusCode.open)){
                     //e receber um msg do cliente o status vai para aberto
                     await this.setStatusOpen(idTicket);
                     await this.createInteraction(idTicket,idSender,configStatus.statusCode.open);
