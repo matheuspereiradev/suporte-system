@@ -8,7 +8,7 @@ import { DeleteInteractionService } from '../services/DeleteInteraction';
 class InteractionController {
 
     async create(request: Request, response: Response) {
-
+        
         const {text,ticket,isPrivate, status} = request.body;
 
         const createInteractionService = container.resolve(CreateInteractionService);
