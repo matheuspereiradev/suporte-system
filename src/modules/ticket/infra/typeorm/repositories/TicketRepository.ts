@@ -32,7 +32,7 @@ class TicketRepository implements ITicketRepository{
     };
 
     public async findAllForUser(company:number):Promise<Array<Ticket>>{
-        const all = await this.ormRepository.find({relations: ["requester","status","category","company"],where:{idCompany:company}});
+        const all = await this.ormRepository.find({relations: ["requester","status","category","company"],where:{idCompany:company},order: {created_at:'DESC'}});
 
 
         return all;

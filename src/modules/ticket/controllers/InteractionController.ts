@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import Erro from '@shared/errors/AppError';
-import { InteractionRepository } from '@modules/ticket/infra/typeorm/repositories/InteractionRepository';
 import { container } from 'tsyringe';
 import { CreateInteractionService } from '@modules/ticket/services/CreateInteractionService';
 import { DeleteInteractionService } from '../services/DeleteInteraction';
@@ -12,8 +11,8 @@ class InteractionController {
         const {text,ticket,isPrivate, status} = request.body;
 
         const createInteractionService = container.resolve(CreateInteractionService);
-
-        const interaction = await createInteractionService.execute({text,file:request.file.filename,idTicket:ticket,idSender:request.user.id,isPrivate},status);
+    
+        const interaction = await createInteractionService.execute({text,file:request.file?.filename,idTicket:ticket,idSender:request.user.id,isPrivate:isPrivate==='true'},status);
 
         return response.status(201).json(interaction);
     }
