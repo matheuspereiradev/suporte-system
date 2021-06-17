@@ -1,17 +1,12 @@
-import Erro from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import ICreateInteractionDTO from '../dtos/ICreateInteractionDTO';
-import { Interaction } from '../infra/typeorm/entities/Interaction';
 import IInteractionRepository from '../IRepositories/IInteractionRepository';
 import configStatus from '@config/status';
-import configCompany from '@config/company'
 import ITicketRepository from '../IRepositories/ITicketRepository';
 import IUserRepository from '@modules/user/IRepositories/IUserRepository';
-import { Ticket } from '../infra/typeorm/entities/Ticket';
 import IStatusTicketRepository from '../IRepositories/IStatusTicketRepository';
 
 @injectable()
-class SetTicketStatus {
+class CalculateTicketStatus {
 
     constructor(
         @inject('InteractionRepository') 
@@ -69,4 +64,4 @@ class SetTicketStatus {
 
 };
 
-export { SetTicketStatus };
+export { CalculateTicketStatus };

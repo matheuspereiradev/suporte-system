@@ -1,4 +1,3 @@
-import Erro from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import ICreateTicketDTO from '../dtos/ICreateTicketDTO';
 import { Ticket } from '../infra/typeorm/entities/Ticket';

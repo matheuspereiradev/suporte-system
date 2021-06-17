@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
+import { container } from 'tsyringe';
 import { StatusTicketRepository } from '@modules/ticket/infra/typeorm/repositories/StatusTicketRepository';
+import { ChangeTicketStatus } from '../services/ChangeTicketStatus';
 
 class StatusTicketController {
 
@@ -11,6 +12,19 @@ class StatusTicketController {
 
         return response.status(200).json(all);
     }
+
+    async changeStatus(request: Request, response: Response) {
+
+        const {status} = request.body;
+        const {ticket} = request.params;
+        const changeStatusService = container.resolve(ChangeTicketStatus);
+
+        const ticketChanged = await changeStatusService.execute(Number(ticket),status,request.user.id);
+
+        return response.status(200).json(ticketChanged);
+    }
+
+
     
 };
 

@@ -1,12 +1,8 @@
-import Erro from '@shared/errors/AppError';
 import { container, inject, injectable } from 'tsyringe';
 import ICreateInteractionDTO from '../dtos/ICreateInteractionDTO';
 import { Interaction } from '../infra/typeorm/entities/Interaction';
 import IInteractionRepository from '../IRepositories/IInteractionRepository';
-import configStatus from '@config/status'
-import ITicketRepository from '../IRepositories/ITicketRepository';
-import IUserRepository from '@modules/user/IRepositories/IUserRepository';
-import {SetTicketStatus} from '@modules/ticket/services/SetTicketStatus';
+import {CalculateTicketStatus} from '@modules/ticket/services/CalculateTicketStatus';
 @injectable()
 class CreateInteractionService {
 
@@ -18,7 +14,7 @@ class CreateInteractionService {
     public async execute(data:ICreateInteractionDTO, status:number=undefined):Promise<Interaction> {
         
         const interaction = await this.interactionRepository.create(data);
-        const ticketStatus = container.resolve(SetTicketStatus);
+        const ticketStatus = container.resolve(CalculateTicketStatus);
         await ticketStatus.execute(data.idTicket, status, data.idSender);
         
         return interaction;
