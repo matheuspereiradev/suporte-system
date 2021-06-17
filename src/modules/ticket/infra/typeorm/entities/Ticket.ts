@@ -61,7 +61,7 @@ class Ticket {
         if (this?.interactions?.length) {
             this.interactions.sort(function(a, b) {
                 var dateA = +new Date(a.created_at), dateB = +new Date(b.created_at);
-                return dateA - dateB;
+                return dateB - dateA;
             });
         }
     }
