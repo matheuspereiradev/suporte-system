@@ -3,6 +3,7 @@ import Erro from '@shared/errors/AppError';
 import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
 import { container } from 'tsyringe';
 import { CreateUserService } from '../services/CreateUserService';
+import{UpdateUserService} from '../services/UpdateUserService'
 
 class UserController {
 
@@ -22,6 +23,16 @@ class UserController {
         const user = await createUserService.execute({name, surname, email, password, login,gender})
 
         return response.status(201).json(user);
+    }
+
+    async update(request: Request, response: Response) {
+        const { name, surname, password, password2, gender } = request.body;
+        
+        const updateUserService = container.resolve(UpdateUserService);
+
+        const user = await updateUserService.execute({id:request.user.id,name, surname, password,password2, gender})
+
+        return response.status(200).json(user);
     }
     
 };
