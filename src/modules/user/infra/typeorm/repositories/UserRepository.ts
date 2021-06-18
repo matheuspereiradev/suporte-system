@@ -28,8 +28,8 @@ class UserRepository implements IUserRepository{
         return all;
     }
 
-    public async create({name, surname, email, password, login,gender}:ICreateUserDTO):Promise<User>{
-        const user =  this.ormRepository.create({name, surname, email, password, login,gender});
+    public async create({name, surname, email, password, gender}:ICreateUserDTO):Promise<User>{
+        const user =  this.ormRepository.create({name, surname, email, password, gender});
 
         await this.ormRepository.save(user);
 

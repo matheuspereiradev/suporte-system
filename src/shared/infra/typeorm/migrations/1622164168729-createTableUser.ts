@@ -39,11 +39,6 @@ export class createTableUser1622164168729 implements MigrationInterface {
                     length:"1"
                 },
                 {
-                    name:"login",
-                    type:"varchar",
-                    length:"20"
-                },
-                {
                     name:"deleted_at",
                     type:"timestamp",
                     isNullable:true

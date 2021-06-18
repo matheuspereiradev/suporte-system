@@ -16,11 +16,11 @@ class UserController {
     }
 
     async create(request: Request, response: Response) {
-        const { name, surname, email, password, login,gender } = request.body;
+        const { name, surname, email, password, gender } = request.body;
         
         const createUserService = container.resolve(CreateUserService);
 
-        const user = await createUserService.execute({name, surname, email, password, login,gender})
+        const user = await createUserService.execute({name, surname, email, password, gender})
 
         return response.status(201).json(user);
     }

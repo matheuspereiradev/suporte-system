@@ -20,8 +20,6 @@ class User{
     @Column()
     password:string;
 
-    @Column()
-    login:string;
 
     @OneToOne(type=>Company,company=>company.id)
     @JoinColumn({name:"id_company"})
