@@ -21,7 +21,7 @@ class UserController {
         const createUserService = container.resolve(CreateUserService);
 
         const user = await createUserService.execute({name, surname, email, password, gender})
-
+        delete user.password;
         return response.status(201).json(user);
     }
 
@@ -32,6 +32,7 @@ class UserController {
 
         const user = await updateUserService.execute({id:request.user.id,name, surname, password,password2, gender})
 
+        delete user.password;
         return response.status(200).json(user);
     }
     

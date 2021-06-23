@@ -38,7 +38,7 @@ class UserRepository implements IUserRepository{
 
     public async update({id,name,surname,gender,password}:IUpdateUserDTO):Promise<User>{
         const user = await this.ormRepository.findOne(id);
-console.log('bbb')
+
         user.name=name;
         user.surname=surname;
         user.gender=gender;
