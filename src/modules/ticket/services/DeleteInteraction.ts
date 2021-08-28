@@ -8,20 +8,20 @@ import IInteractionRepository from '../IRepositories/IInteractionRepository';
 class DeleteInteractionService {
 
     constructor(
-        @inject('InteractionRepository') 
-        private interactionRepository:IInteractionRepository
-    ){}
+        @inject('InteractionRepository')
+        private interactionRepository: IInteractionRepository
+    ) { }
 
-    public async execute(idTicket:string,idUser:string):Promise<Interaction> {
+    public async execute(idTicket: string, idUser: string): Promise<Interaction> {
 
         const interaction = await this.interactionRepository.findByID(idTicket)
 
-        if(idUser !== interaction.idSender){
-            throw new Erro("Not denied",1050, 403)
+        if (idUser !== interaction.idSender) {
+            throw new Erro("Action denied", 1050, 403)
         }
 
         const ticket = await this.interactionRepository.delete(idTicket);
-    
+
         return ticket;
     }
 
