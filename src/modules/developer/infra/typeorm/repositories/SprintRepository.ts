@@ -14,7 +14,7 @@ class SprintRepository implements ISprintRepository {
 
     public async findByID(id: number): Promise<Sprint> {
 
-        const all = await this.ormRepository.findOne({ where: { id } });
+        const all = await this.ormRepository.findOne({ where: { id }, relations: ["backlogs"] });
 
         return all;
     };

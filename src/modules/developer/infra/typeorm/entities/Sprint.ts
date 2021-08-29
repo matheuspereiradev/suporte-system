@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Backlog } from "./Backlog";
 
 @Entity("tb_sprint")
 class Sprint {
@@ -17,6 +18,14 @@ class Sprint {
 
     @Column({ name: 'is_open' })
     isOpen: boolean;
+
+    // @OneToOne(type => User, user => user.id)
+    // @JoinColumn({ name: "id_responsable" })
+    // responsable: User;
+
+    @ManyToOne(() => Backlog, back => back.idSprint)
+    @JoinColumn({ name: "id" })
+    backlogs: Backlog;
 
     @CreateDateColumn()
     created_at: Date;

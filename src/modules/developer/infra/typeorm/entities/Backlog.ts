@@ -17,7 +17,9 @@ class Backlog {
     @Column({ name: 'id_responsable' })
     idResponsable: string;
 
-    @OneToOne(type => User, user => user.id)
+    @OneToOne(type => User, user => user.id, {
+        eager: true
+    })
     @JoinColumn({ name: "id_responsable" })
     responsable: User;
 
