@@ -5,6 +5,7 @@ import { routesCompany } from '@modules/company/infra/http/routes/company.routes
 import { routesSession } from '@modules/user/infra/http/routes/session.routes';
 import { routesSprint } from '@modules/developer/infra/http/routes/sprint.routes';
 import { routesBacklog } from '@modules/developer/infra/http/routes/backlog.routes';
+import { routesTask } from '@modules/developer/infra/http/routes/task.routes';
 
 const routes = Router();
 
@@ -15,5 +16,6 @@ routes.use('/ticket', routesTicket);
 routes.use('/company', routesCompany);
 routes.use('/sprint', routesSprint);
 routes.use('/backlog', routesBacklog);
+routes.use('/task', routesTask);
 
 export { routes };

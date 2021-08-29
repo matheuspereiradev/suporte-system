@@ -5,7 +5,7 @@ import { Backlog } from "./Backlog";
 class Sprint {
 
     @PrimaryGeneratedColumn()
-    readonly id: string;
+    readonly id: number;
 
     @Column()
     name: string;

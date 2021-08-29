@@ -18,16 +18,13 @@ class BacklogRepository implements IBacklogRepository {
 
     public async findAll(): Promise<Array<Backlog>> {
         const all = await this.ormRepository.find({ relations: ["responsable"] });
-
         return all;
     }
 
-    // public async findByID(id: number): Promise<Sprint> {
-
-    //     const all = await this.ormRepository.findOne({ where: { id } });
-
-    //     return all;
-    // };
+    public async findByID(id: number): Promise<Backlog> {
+        const all = await this.ormRepository.findOne({ where: { id } });
+        return all;
+    };
 
     public async create(data: ICreateBacklogDTO): Promise<Backlog> {
         const backlog = this.ormRepository.create(data);

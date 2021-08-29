@@ -1,9 +1,9 @@
 import { User } from "@modules/user/infra/typeorm/entities/User";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Sprint } from "./Sprint";
 
-@Entity("tb_backlog")
-class Backlog {
+
+@Entity("tb_task")
+class Task {
 
     @PrimaryGeneratedColumn()
     readonly id: number;
@@ -14,8 +14,8 @@ class Backlog {
     @Column()
     description: string;
 
-    @Column({ name: 'id_responsable' })
-    idResponsable: string;
+    @Column({ name: 'is_bug' })
+    isBug: boolean;
 
     @OneToOne(type => User, user => user.id, {
         eager: true
@@ -23,15 +23,24 @@ class Backlog {
     @JoinColumn({ name: "id_responsable" })
     responsable: User;
 
-    // @OneToOne(type => Sprint, sprint => sprint.id)
-    // @JoinColumn({ name: "id_sprint" })
-    // sprint: Sprint;
+    @OneToOne(type => User, user => user.id, {
+        eager: true
+    })
+    @JoinColumn({ name: "created_by" })
+    creator: User;
 
-    @Column({ name: 'id_sprint' })
-    idSprint: number;
 
-    @Column({ name: 'is_open' })
-    isOpen: boolean;
+    @Column({ name: 'do_position' })
+    doPosition: number;
+
+    @Column({ name: 'created_by' })
+    createdBy: string;
+
+    @Column({ name: 'id_responsable' })
+    idResponsable: string;
+
+    @Column({ name: 'id_backlog' })
+    idBacklog: number;
 
     @CreateDateColumn()
     created_at: Date;
@@ -42,4 +51,4 @@ class Backlog {
 
 }
 
-export { Backlog };
+export { Task };
