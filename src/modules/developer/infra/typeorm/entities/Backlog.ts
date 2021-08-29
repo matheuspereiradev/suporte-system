@@ -1,6 +1,7 @@
 import { User } from "@modules/user/infra/typeorm/entities/User";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Sprint } from "./Sprint";
+import { Task } from "./Task";
 
 @Entity("tb_backlog")
 class Backlog {
@@ -23,9 +24,19 @@ class Backlog {
     @JoinColumn({ name: "id_responsable" })
     responsable: User;
 
-    // @OneToOne(type => Sprint, sprint => sprint.id)
-    // @JoinColumn({ name: "id_sprint" })
-    // sprint: Sprint;
+    // @ManyToOne(() => Task, tsk => tsk.isBug)
+    // @JoinColumn({ name: "id" })
+    // tasks: Task;
+
+    @OneToMany(() => Task, task => task.backlog, {
+        eager: true
+    })
+    @JoinColumn({ name: "id" })
+    tasks: Task;
+
+    @ManyToOne(() => Sprint, sprint => sprint.backlogs)
+    @JoinColumn({ name: "id_sprint" })
+    sprint: Sprint;
 
     @Column({ name: 'id_sprint' })
     idSprint: number;

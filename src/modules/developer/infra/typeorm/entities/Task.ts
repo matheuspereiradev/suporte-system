@@ -1,5 +1,6 @@
 import { User } from "@modules/user/infra/typeorm/entities/User";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Backlog } from "./Backlog";
 
 
 @Entity("tb_task")
@@ -29,7 +30,6 @@ class Task {
     @JoinColumn({ name: "created_by" })
     creator: User;
 
-
     @Column({ name: 'do_position' })
     doPosition: number;
 
@@ -41,6 +41,10 @@ class Task {
 
     @Column({ name: 'id_backlog' })
     idBacklog: number;
+
+    @ManyToOne(() => Backlog, back => back.tasks)
+    @JoinColumn({ name: "id_backlog" })
+    backlog: Backlog;
 
     @CreateDateColumn()
     created_at: Date;

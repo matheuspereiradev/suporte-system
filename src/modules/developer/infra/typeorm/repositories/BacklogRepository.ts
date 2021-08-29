@@ -17,7 +17,7 @@ class BacklogRepository implements IBacklogRepository {
     }
 
     public async findAll(): Promise<Array<Backlog>> {
-        const all = await this.ormRepository.find({ relations: ["responsable"] });
+        const all = await this.ormRepository.find({ relations: ["responsable", "tasks"] });
         return all;
     }
 
