@@ -13,21 +13,15 @@ import { ChangeSprintOpenedStatusService } from '../services/ChangeSprintOpenedS
 class SprintController {
 
     async show(request: Request, response: Response) {
-
         const sprintRepository = new SprintRepository();
-
         const all = await sprintRepository.findAll();
-
         return response.status(200).json(all);
     }
 
     async find(request: Request, response: Response) {
-
         const id = request.params.id;
         const sprintRepository = new SprintRepository();
-
         const all = await sprintRepository.findByID(Number(id))
-
         return response.status(200).json(all);
     }
 
@@ -38,6 +32,7 @@ class SprintController {
         const sprint = await createSprintService.execute({ name, startDate, expectedEndDate });
         return response.status(201).json(sprint);
     }
+
     async update(request: Request, response: Response) {
         const id = request.params.id;
         const { name, startDate, expectedEndDate } = request.body;
@@ -47,7 +42,6 @@ class SprintController {
     }
 
     async delete(request: Request, response: Response) {
-
         const { id } = request.params;
         const deleteSprintService = container.resolve(DeleteSprintService);
         const mensage = await deleteSprintService.execute(Number(id));

@@ -1,4 +1,4 @@
-export default interface ICreateInteractionDTO {
+export default interface ICreateSprintDTO {
     name: string;
     startDate: Date;
     expectedEndDate: Date;

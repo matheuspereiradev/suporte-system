@@ -14,6 +14,8 @@ import IStatusTicketRepository from '@modules/ticket/IRepositories/IStatusTicket
 import { StatusTicketRepository } from '@modules/ticket/infra/typeorm/repositories/StatusTicketRepository';
 import { SprintRepository } from '@modules/developer/infra/typeorm/repositories/SprintRepository';
 import ISprintRepository from '@modules/developer/IRepositories/ISprintRepository';
+import { BacklogRepository } from '@modules/developer/infra/typeorm/repositories/BacklogRepository';
+import IBacklogRepository from '@modules/developer/IRepositories/IBacklogRepository';
 
 container.registerSingleton<IHashProvider>('HashProvider', bcryptHashProvider);
 container.registerSingleton<ISendMail>('SendMail', NodeMeiler);
@@ -22,3 +24,4 @@ container.registerSingleton<ITicketRepository>('TicketRepository', TicketReposit
 container.registerSingleton<IInteractionRepository>('InteractionRepository', InteractionRepository);
 container.registerSingleton<IStatusTicketRepository>('StatusTicketRepository', StatusTicketRepository);
 container.registerSingleton<ISprintRepository>('SprintRepository', SprintRepository);
+container.registerSingleton<IBacklogRepository>('BacklogRepository', BacklogRepository);
