@@ -26,7 +26,7 @@ class Sprint {
 
     @OneToMany(() => Backlog, back => back.sprint)
     @JoinColumn({ name: "id" })
-    backlogs: Backlog;
+    backlogs: Backlog[];
 
     @CreateDateColumn()
     created_at: Date;

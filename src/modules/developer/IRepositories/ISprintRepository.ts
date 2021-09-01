@@ -4,6 +4,7 @@ import IUpdateSprintDTO from "../dtos/IUpdateSprintDTO";
 
 export default interface ISprintRepository {
     findAll(): Promise<Array<Sprint>>;
+    findOpen(): Promise<Array<Sprint>>;
     findByID(id: number): Promise<Sprint>;
     create(data: ICreateSprintDTO): Promise<Sprint>;
     update(data: IUpdateSprintDTO): Promise<Sprint>;

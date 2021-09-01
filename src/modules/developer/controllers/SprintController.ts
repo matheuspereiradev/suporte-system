@@ -8,6 +8,7 @@ import { CreateSprintService } from '../services/CreateSprintService';
 import { DeleteSprintService } from '../services/DeleteSprintService';
 import { UpdateSprintService } from '../services/UpdateSprintService';
 import { ChangeSprintOpenedStatusService } from '../services/ChangeSprintOpenedStatusService';
+import SprintView from '../views/SprintView';
 
 
 class SprintController {
@@ -22,6 +23,15 @@ class SprintController {
         const id = request.params.id;
         const sprintRepository = new SprintRepository();
         const all = await sprintRepository.findByID(Number(id))
+
+        return response.status(200).json(SprintView.render(all));
+    }
+
+    async findOpen(request: Request, response: Response) {
+
+        const sprintRepository = new SprintRepository();
+        const all = await sprintRepository.findOpen()
+
         return response.status(200).json(all);
     }
 

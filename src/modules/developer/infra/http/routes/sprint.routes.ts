@@ -6,6 +6,7 @@ const routesSprint = Router();
 const sprintController = new SprintController();
 
 routesSprint.get('/', ensureAuthenticated, sprintController.show);
+routesSprint.get('/open', ensureAuthenticated, sprintController.findOpen);
 routesSprint.get('/find/:id', ensureAuthenticated, sprintController.find);
 routesSprint.post('/', ensureAuthenticated, sprintController.create);
 routesSprint.put('/:id', ensureAuthenticated, sprintController.update);

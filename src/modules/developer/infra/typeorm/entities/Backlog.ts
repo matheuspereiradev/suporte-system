@@ -29,10 +29,10 @@ class Backlog {
     // tasks: Task;
 
     @OneToMany(() => Task, task => task.backlog, {
-        eager: true
+        eager: true,
     })
     @JoinColumn({ name: "id" })
-    tasks: Task;
+    tasks: Task[];
 
     @ManyToOne(() => Sprint, sprint => sprint.backlogs)
     @JoinColumn({ name: "id_sprint" })

@@ -24,6 +24,11 @@ class SprintRepository implements ISprintRepository {
 
         return all;
     }
+    public async findOpen(): Promise<Array<Sprint>> {
+        const all = await this.ormRepository.find({ where: { isOpen: true } });
+
+        return all;
+    }
 
 
 
