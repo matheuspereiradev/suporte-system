@@ -37,8 +37,7 @@ class BacklogController {
     // }
 
     async create(request: Request, response: Response) {
-        const idResponsable = request.user.id;
-        const { title, description, idSprint } = request.body;
+        const { title, description, idSprint, idResponsable } = request.body;
         const createBacklogService = container.resolve(CreateBacklogService);
         const backlog = await createBacklogService.execute({ title, description, idSprint, idResponsable });
         return response.status(201).json(backlog);

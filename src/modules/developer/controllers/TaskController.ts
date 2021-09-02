@@ -33,6 +33,7 @@ class TaskController {
     async update(request: Request, response: Response) {
         const id = request.params.id;
         const { title, description, isBug, idBacklog, idResponsable } = request.body;
+
         const updateTaskService = container.resolve(UpdateTaskService);
         const task = await updateTaskService.execute({ id: Number(id), title, description, isBug, idBacklog, idResponsable });
         return response.status(200).json(task);

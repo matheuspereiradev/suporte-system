@@ -28,6 +28,7 @@ class BacklogRepository implements IBacklogRepository {
 
     public async create(data: ICreateBacklogDTO): Promise<Backlog> {
         const backlog = this.ormRepository.create(data);
+        console.log(data)
         await this.ormRepository.save(backlog);
         return backlog;
     }
@@ -37,6 +38,7 @@ class BacklogRepository implements IBacklogRepository {
         backlog.description = data.description;
         backlog.idResponsable = data.idResponsable;
         backlog.title = data.title;
+        delete backlog.responsable
         await this.ormRepository.save(backlog);
         return backlog;
     }

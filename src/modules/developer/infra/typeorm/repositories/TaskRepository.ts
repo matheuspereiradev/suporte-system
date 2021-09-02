@@ -34,6 +34,8 @@ class TaskRepository implements ITaskRepository {
         task.idResponsable = data.idResponsable;
         task.title = data.title;
         task.isBug = data.isBug;
+        delete task.creator
+        delete task.responsable
         await this.ormRepository.save(task);
         return task;
     }

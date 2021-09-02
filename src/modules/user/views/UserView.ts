@@ -14,7 +14,7 @@ export default {
         }
     },
 
-    // renderMany(orfanatos:Orfanato[]){
-    //     return orfanatos.map(orfanato=>this.render(orfanato))
-    // }
+    renderMany(users: User[]) {
+        return users.map(user => this.render(user))
+    }
 }
