@@ -1,5 +1,5 @@
-import { BacklogController } from '@modules/developer/controllers/BacklogController';
-import ensureAuthenticated from '@modules/user/infra/http/middleware/ensureAuthenticated';
+import { BacklogController } from '../../../controllers/BacklogController';
+import ensureAuthenticated from '../../../../user/infra/http/middleware/ensureAuthenticated';
 import { Router } from 'express';
 
 const routesBacklog = Router();

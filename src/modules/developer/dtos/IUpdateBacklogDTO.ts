@@ -3,4 +3,5 @@ export default interface IUpdateBacklogDTO {
     title: string;
     description: string;
     idResponsable: string;
+    domain: string;
 }

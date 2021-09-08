@@ -1,9 +1,9 @@
-import {Router,Request,Response} from 'express';
-import {CategoryTicketController} from '@modules/ticket/controllers/CategoryTicketController'
+import { CategoryTicketController } from '../../../controllers/CategoryTicketController';
+import { Router } from 'express';
 
 const routesCategoryTicket = Router();
 const statusCategoryController = new CategoryTicketController();
 
-routesCategoryTicket.get('/',statusCategoryController.show);
+routesCategoryTicket.get('/', statusCategoryController.show);
 
-export {routesCategoryTicket};
+export { routesCategoryTicket };

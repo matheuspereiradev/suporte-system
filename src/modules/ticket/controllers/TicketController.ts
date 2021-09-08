@@ -1,8 +1,7 @@
+import { TicketRepository } from '../infra/typeorm/repositories/TicketRepository';
+import { CreateTicketService } from '../services/CreateTicketService';
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
-import { TicketRepository } from '@modules/ticket/infra/typeorm/repositories/TicketRepository';
 import { container } from 'tsyringe';
-import { CreateTicketService } from '@modules/ticket/services/CreateTicketService';
 import { Ticket } from '../infra/typeorm/entities/Ticket';
 import { DeleteTicketService } from '../services/DeleteTicketService';
 

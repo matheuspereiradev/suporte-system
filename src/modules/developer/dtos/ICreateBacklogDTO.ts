@@ -3,4 +3,5 @@ export default interface ICreateBacklogDTO {
     description: string;
     idResponsable: string;
     idSprint: number;
+    domain: string;
 }

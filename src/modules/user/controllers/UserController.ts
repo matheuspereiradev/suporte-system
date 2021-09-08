@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
-import { UserRepository } from '@modules/user/infra/typeorm/repositories/UserRepository';
+import { UserRepository } from '../../user/infra/typeorm/repositories/UserRepository';
 import { container } from 'tsyringe';
 import { CreateUserService } from '../services/CreateUserService';
 import { UpdateUserService } from '../services/UpdateUserService'

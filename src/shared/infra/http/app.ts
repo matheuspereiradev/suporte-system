@@ -1,16 +1,16 @@
 import express, { NextFunction, Response, Request } from 'express';
 import 'express-async-errors'
 import cors from 'cors';
-import CreateConnection from '@shared/infra/typeorm/index';
-import { routes } from '@shared/infra/http/routes/index.routes';
+import CreateConnection from '../../../shared/infra/typeorm/index';
+import { routes } from '../../../shared/infra/http/routes/index.routes';
 import 'reflect-metadata';
-import Erro from '@shared/errors/AppError';
+import Erro from '../../../shared/errors/AppError';
 import { errors } from 'celebrate'
 import path from 'path';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 
-import '@shared/container'
+import '../../../shared/container'
 
 const app = express();
 

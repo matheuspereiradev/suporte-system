@@ -1,4 +1,4 @@
-import { User } from "@modules/user/infra/typeorm/entities/User";
+import { User } from "../../../../user/infra/typeorm/entities/User";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Sprint } from "./Sprint";
 import { Task } from "./Task";
@@ -11,6 +11,9 @@ class Backlog {
 
     @Column()
     title: string;
+
+    @Column()
+    domain: string;
 
     @Column()
     description: string;

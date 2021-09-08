@@ -1,7 +1,5 @@
-import UserView from '@modules/user/views/UserView';
-import { Sprint } from '../infra/typeorm/entities/Sprint';
+import UserView from '../../user/views/UserView';
 import { Task } from '../infra/typeorm/entities/Task';
-import BacklogView from './BacklogView';
 
 function groupBy(arr: Array<Task>, prop: string) {
     // const map = new Map(Array.from(arr, obj => [obj[prop], []]));

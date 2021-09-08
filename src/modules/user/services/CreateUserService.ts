@@ -1,12 +1,11 @@
-import { DocumentValidation } from '@shared/helpers/documentValidation';
-import { inject, injectable } from 'tsyringe'
-import Erro from '@shared/errors/AppError';
-import { User } from '@modules/user/infra/typeorm/entities/User';
-import IUserRepository from '../IRepositories/IUserRepository';
-import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
-import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
-import EmailConfig from '@config/email';
+import ISendMail from '../../../shared/infra/providers/mail/model/ISendMail';
+import { inject, injectable } from 'tsyringe';
+import EmailConfig from "../../../config/email";
+import Erro from '../../../shared/errors/AppError';
+import { User } from '../../user/infra/typeorm/entities/User';
 import ICreateUserDTO from '../dtos/ICreateUserDTO';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
+import IUserRepository from '../IRepositories/IUserRepository';
 
 
 interface IUserWelcomeEmail {
@@ -73,3 +72,4 @@ class CreateUserService {
 };
 
 export { CreateUserService };
+

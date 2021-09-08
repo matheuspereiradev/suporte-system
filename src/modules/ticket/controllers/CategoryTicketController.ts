@@ -1,6 +1,5 @@
+import { CategoryTicketRepository } from '../infra/typeorm/repositories/CategoryTicketRepository';
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
-import { CategoryTicketRepository } from '@modules/ticket/infra/typeorm/repositories/CategoryTicketRepository';
 
 class CategoryTicketController {
 
@@ -11,7 +10,7 @@ class CategoryTicketController {
 
         return response.status(200).json(all);
     }
-    
+
 };
 
 export { CategoryTicketController };

@@ -1,13 +1,10 @@
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
-import { TicketRepository } from '@modules/ticket/infra/typeorm/repositories/TicketRepository';
 import { container } from 'tsyringe';
-import { CreateTicketService } from '@modules/ticket/services/CreateTicketService';
 import { SprintRepository } from '../infra/typeorm/repositories/SprintRepository';
+import { ChangeSprintOpenedStatusService } from '../services/ChangeSprintOpenedStatusService';
 import { CreateSprintService } from '../services/CreateSprintService';
 import { DeleteSprintService } from '../services/DeleteSprintService';
 import { UpdateSprintService } from '../services/UpdateSprintService';
-import { ChangeSprintOpenedStatusService } from '../services/ChangeSprintOpenedStatusService';
 import SprintView from '../views/SprintView';
 
 

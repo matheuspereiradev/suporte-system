@@ -1,5 +1,5 @@
-import { TaskController } from '@modules/developer/controllers/TaskController';
-import ensureAuthenticated from '@modules/user/infra/http/middleware/ensureAuthenticated';
+import { TaskController } from '../../../controllers/TaskController';
+import ensureAuthenticated from '../../../../user/infra/http/middleware/ensureAuthenticated';
 import { Router } from 'express';
 
 const routesTask = Router();

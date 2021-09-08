@@ -1,10 +1,10 @@
-import {Router,Request,Response} from 'express';
-import { CompanyController } from '@modules/company/controllers/CompanyController';
-import ensureAuthenticated from '@modules/user/infra/http/middleware/ensureAuthenticated';
+import { Router } from 'express';
+import ensureAuthenticated from '../../../../user/infra/http/middleware/ensureAuthenticated';
+import { CompanyController } from '../../../controllers/CompanyController';
 
 const routesCompany = Router();
 const companyController = new CompanyController();
 
-routesCompany.get('/',ensureAuthenticated,companyController.show);
+routesCompany.get('/', ensureAuthenticated, companyController.show);
 
-export {routesCompany};
+export { routesCompany };

@@ -1,14 +1,14 @@
-import Erro from '@shared/errors/AppError';
-export class DocumentValidation{
+import Erro from '../errors/AppError';
+export class DocumentValidation {
     public static async cpf(cpf: string): Promise<boolean> {
         if (cpf == null) {
-            throw new Erro("CPF not is valid",1001);
+            throw new Erro("CPF not is valid", 1001);
         }
         if (cpf.length != 11) {
-            throw new Erro("CPF not is valid",1001);
+            throw new Erro("CPF not is valid", 1001);
         }
         if ((cpf == '00000000000') || (cpf == '11111111111') || (cpf == '22222222222') || (cpf == '33333333333') || (cpf == '44444444444') || (cpf == '55555555555') || (cpf == '66666666666') || (cpf == '77777777777') || (cpf == '88888888888') || (cpf == '99999999999')) {
-            throw new Erro("CPF not is valid",1001);
+            throw new Erro("CPF not is valid", 1001);
         }
         let numero: number = 0;
         let caracter: string = '';
@@ -50,7 +50,7 @@ export class DocumentValidation{
         }
         cpfAux = cpfAux + digito2;
         if (cpf != cpfAux) {
-            throw new Erro("CPF not is valid",1001);
+            throw new Erro("CPF not is valid", 1001);
         }
         else {
             return true;

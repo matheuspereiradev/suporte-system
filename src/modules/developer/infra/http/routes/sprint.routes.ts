@@ -1,5 +1,5 @@
-import { SprintController } from '@modules/developer/controllers/SprintController';
-import ensureAuthenticated from '@modules/user/infra/http/middleware/ensureAuthenticated';
+import { SprintController } from '../../../controllers/SprintController';
+import ensureAuthenticated from '../../../../user/infra/http/middleware/ensureAuthenticated';
 import { Router } from 'express';
 
 const routesSprint = Router();

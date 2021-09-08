@@ -1,6 +1,6 @@
-import ICreateTaskDTO from '@modules/developer/dtos/ICreateTaskDTO';
-import IUpdateTaskDTO from '@modules/developer/dtos/IUpdateTaskDTO';
-import ITaskRepository from '@modules/developer/IRepositories/ITaskRepository';
+import ICreateTaskDTO from '../../../dtos/ICreateTaskDTO';
+import IUpdateTaskDTO from '../../../dtos/IUpdateTaskDTO';
+import ITaskRepository from '../../../IRepositories/ITaskRepository';
 import { getRepository, Repository } from 'typeorm';
 import { Task } from '../entities/Task';
 

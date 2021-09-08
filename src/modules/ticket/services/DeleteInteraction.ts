@@ -1,7 +1,6 @@
-import Erro from '@shared/errors/AppError';
+import Erro from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { Interaction } from '../infra/typeorm/entities/Interaction';
-import { Ticket } from '../infra/typeorm/entities/Ticket';
 import IInteractionRepository from '../IRepositories/IInteractionRepository';
 
 @injectable()
@@ -29,3 +28,4 @@ class DeleteInteractionService {
 };
 
 export { DeleteInteractionService };
+

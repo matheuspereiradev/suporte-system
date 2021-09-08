@@ -1,15 +1,15 @@
 import { Router, Request, Response } from 'express';
-import { routesUser } from '@modules/user/infra/http/routes/user.routes';
-import { routesTicket } from '@modules/ticket/infra/http/routes/ticket.routes'
-import { routesCompany } from '@modules/company/infra/http/routes/company.routes';
-import { routesSession } from '@modules/user/infra/http/routes/session.routes';
-import { routesSprint } from '@modules/developer/infra/http/routes/sprint.routes';
-import { routesBacklog } from '@modules/developer/infra/http/routes/backlog.routes';
-import { routesTask } from '@modules/developer/infra/http/routes/task.routes';
+import { routesUser } from '../../../../modules/user/infra/http/routes/user.routes';
+import { routesTicket } from '../../../../modules/ticket/infra/http/routes/ticket.routes'
+import { routesCompany } from '../../../../modules/company/infra/http/routes/company.routes';
+import { routesSession } from '../../../../modules/user/infra/http/routes/session.routes';
+import { routesSprint } from '../../../../modules/developer/infra/http/routes/sprint.routes';
+import { routesBacklog } from '../../../../modules/developer/infra/http/routes/backlog.routes';
+import { routesTask } from '../../../../modules/developer/infra/http/routes/task.routes';
 
 const routes = Router();
 
-routes.get('/healthz', (req: Request, res: Response) => { res.json({ "status": "running" }) });
+routes.get('/', (req: Request, res: Response) => { res.json({ "status": "running" }) });
 routes.use('/user', routesUser);
 routes.use('/session', routesSession);
 routes.use('/ticket', routesTicket);

@@ -1,6 +1,5 @@
 import { User } from '../infra/typeorm/entities/User';
 
-
 export default {
     render({ id, name, admin, email, gender, company, surname }: User) {
         return {

@@ -1,12 +1,10 @@
-import { DocumentValidation } from '@shared/helpers/documentValidation';
-import { inject, injectable } from 'tsyringe'
-import Erro from '@shared/errors/AppError';
-import { User } from '@modules/user/infra/typeorm/entities/User';
-import IUserRepository from '../IRepositories/IUserRepository';
-import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
-import ISendMail from '@shared/infra/providers/mail/model/ISendMail';
-import EmailConfig from '@config/email';
+import { User } from '../../user/infra/typeorm/entities/User';
+import Erro from '../../../shared/errors/AppError';
+import ISendMail from '../../../shared/infra/providers/mail/model/ISendMail';
+import { inject, injectable } from 'tsyringe';
 import IUpdateUserDTO from '../dtos/IUpdateUserDTO';
+import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
+import IUserRepository from '../IRepositories/IUserRepository';
 
 
 @injectable()
@@ -24,10 +22,10 @@ class UpdateUserService {
     ) { }
 
     public async execute({ id, name, surname, password, password2, gender }: IUpdateUserDTO): Promise<User> {
-        
+
         if (password !== password2)
-        throw new Erro("password not are equals", 1033);
-        
+            throw new Erro("password not are equals", 1033);
+
         const hashedPassword = await this.hashProvider.genarateHash(password);
         const user = await this.repository.update({
             id, name, surname, password: hashedPassword, password2, gender

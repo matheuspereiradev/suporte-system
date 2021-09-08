@@ -1,12 +1,8 @@
+import ICreateBacklogDTO from '../../../dtos/ICreateBacklogDTO';
+import IUpdateBacklogDTO from '../../../dtos/IUpdateBacklogDTO';
+import IBacklogRepository from '../../../IRepositories/IBacklogRepository';
 import { getRepository, Repository } from 'typeorm';
-import ISprintRepository from '@modules/developer/IRepositories/ISprintRepository';
-import { Sprint } from '../entities/Sprint';
-import ICreateSprintDTO from '@modules/developer/dtos/ICreateSprintDTO';
-import IUpdateSprintDTO from '@modules/developer/dtos/IUpdateSprintDTO';
-import IBacklogRepository from '@modules/developer/IRepositories/IBacklogRepository';
 import { Backlog } from '../entities/Backlog';
-import ICreateBacklogDTO from '@modules/developer/dtos/ICreateBacklogDTO';
-import IUpdateBacklogDTO from '@modules/developer/dtos/IUpdateBacklogDTO';
 
 class BacklogRepository implements IBacklogRepository {
 
@@ -59,4 +55,4 @@ class BacklogRepository implements IBacklogRepository {
 
 }
 
-export { BacklogRepository }
+export { BacklogRepository };

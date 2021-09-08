@@ -1,7 +1,7 @@
 import { sign } from 'jsonwebtoken';
-import authConfig from "@config/auth";
-import Erro from '@shared/errors/AppError';
-import { User } from '@modules/user/infra/typeorm/entities/User';
+import authConfig from "../../../config/auth";
+import Erro from '../../../shared/errors/AppError';
+import { User } from '../../user/infra/typeorm/entities/User';
 import { inject, injectable } from 'tsyringe';
 import IUserRepository from '../IRepositories/IUserRepository';
 import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';

@@ -1,18 +1,10 @@
 import { Request, Response } from 'express';
-import Erro from '@shared/errors/AppError';
-import { TicketRepository } from '@modules/ticket/infra/typeorm/repositories/TicketRepository';
 import { container } from 'tsyringe';
-import { CreateTicketService } from '@modules/ticket/services/CreateTicketService';
-import { SprintRepository } from '../infra/typeorm/repositories/SprintRepository';
-import { CreateSprintService } from '../services/CreateSprintService';
-import { DeleteSprintService } from '../services/DeleteSprintService';
-import { UpdateSprintService } from '../services/UpdateSprintService';
-import { ChangeSprintOpenedStatusService } from '../services/ChangeSprintOpenedStatusService';
 import { BacklogRepository } from '../infra/typeorm/repositories/BacklogRepository';
+import { ChangeBacklogOpenedStatusService } from '../services/ChangeBacklogOpenedStatusService';
 import { CreateBacklogService } from '../services/CreateBacklogService';
 import { DeleteBacklogService } from '../services/DeleteBacklogService';
 import { UpdateBacklogService } from '../services/UpdateBacklogService';
-import { ChangeBacklogOpenedStatusService } from '../services/ChangeBacklogOpenedStatusService';
 
 
 class BacklogController {
@@ -37,17 +29,17 @@ class BacklogController {
     // }
 
     async create(request: Request, response: Response) {
-        const { title, description, idSprint, idResponsable } = request.body;
+        const { title, description, idSprint, idResponsable, domain } = request.body;
         const createBacklogService = container.resolve(CreateBacklogService);
-        const backlog = await createBacklogService.execute({ title, description, idSprint, idResponsable });
+        const backlog = await createBacklogService.execute({ title, description, idSprint, idResponsable, domain });
         return response.status(201).json(backlog);
     }
 
     async update(request: Request, response: Response) {
         const id = request.params.id;
-        const { title, description, idResponsable } = request.body;
+        const { title, description, idResponsable, domain } = request.body;
         const updateBacklogService = container.resolve(UpdateBacklogService);
-        const backlog = await updateBacklogService.execute({ id: Number(id), title, description, idResponsable });
+        const backlog = await updateBacklogService.execute({ id: Number(id), title, description, idResponsable, domain });
         return response.status(200).json(backlog);
     }
 

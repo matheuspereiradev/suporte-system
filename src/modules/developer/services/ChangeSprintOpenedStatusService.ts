@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import IUpdateSprintDTO from '../dtos/IUpdateSprintDTO';
 import { Sprint } from '../infra/typeorm/entities/Sprint';
 import ISprintRepository from '../IRepositories/ISprintRepository';
 
@@ -25,3 +24,4 @@ class ChangeSprintOpenedStatusService {
 };
 
 export { ChangeSprintOpenedStatusService };
+

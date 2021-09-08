@@ -1,5 +1,5 @@
 import { Sprint } from "../infra/typeorm/entities/Sprint";
-import ICreateSprintDTO from '@modules/developer/dtos/ICreateSprintDTO';
+import ICreateSprintDTO from '../dtos/ICreateSprintDTO';
 import IUpdateSprintDTO from "../dtos/IUpdateSprintDTO";
 
 export default interface ISprintRepository {

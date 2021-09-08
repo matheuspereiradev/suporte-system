@@ -1,4 +1,4 @@
-import { User } from "@modules/user/infra/typeorm/entities/User";
+import { User } from "../../../../user/infra/typeorm/entities/User";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Backlog } from "./Backlog";
 

@@ -1,6 +1,5 @@
 import { inject, injectable } from 'tsyringe';
 import { Backlog } from '../infra/typeorm/entities/Backlog';
-import { Sprint } from '../infra/typeorm/entities/Sprint';
 import IBacklogRepository from '../IRepositories/IBacklogRepository';
 
 

@@ -1,51 +1,51 @@
-import { Company } from "@modules/company/infra/typeorm/entities/Company";
-import {Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn} from "typeorm";
-import {v4 as uuid} from 'uuid';
+import { Company } from "../../../../company/infra/typeorm/entities/Company";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { v4 as uuid } from 'uuid';
 
 @Entity("tb_user")
-class User{
+class User {
 
     @PrimaryColumn()
-    readonly id:string;
+    readonly id: string;
 
     @Column()
-    name:string;
+    name: string;
 
     @Column()
-    surname:string;
+    surname: string;
 
     @Column()
-    email:string;
+    email: string;
 
     @Column()
-    password:string;
+    password: string;
 
 
-    @OneToOne(type=>Company,company=>company.id)
-    @JoinColumn({name:"id_company"})
-    company:Company;
+    @OneToOne(type => Company, company => company.id)
+    @JoinColumn({ name: "id_company" })
+    company: Company;
 
-    @Column({name:"id_company"})
-    idCompany:number;
-
-    @Column()
-    gender:string;
+    @Column({ name: "id_company" })
+    idCompany: number;
 
     @Column()
-    admin:boolean;
+    gender: string;
+
+    @Column()
+    admin: boolean;
 
     @CreateDateColumn()
-    created_at:Date;
+    created_at: Date;
 
     @DeleteDateColumn()
-    deleted_at:Date;
+    deleted_at: Date;
 
-    constructor(){
-        if(!this.id){
+    constructor() {
+        if (!this.id) {
             this.id = uuid();
         }
 
     }
 }
 
-export{User};
+export { User };

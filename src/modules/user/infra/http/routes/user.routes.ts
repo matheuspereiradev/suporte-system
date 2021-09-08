@@ -1,6 +1,6 @@
-import { Router, Request, Response } from 'express';
-import { UserController } from '@modules/user/controllers/UserController';
-import ensureAuthenticated from '@modules/user/infra/http/middleware/ensureAuthenticated';
+import { Router } from 'express';
+import { UserController } from '../../../../user/controllers/UserController';
+import ensureAuthenticated from '../../../../user/infra/http/middleware/ensureAuthenticated';
 
 const routesUser = Router();
 

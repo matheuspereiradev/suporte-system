@@ -1,8 +1,8 @@
 import { getRepository, Repository } from 'typeorm';
-import ISprintRepository from '@modules/developer/IRepositories/ISprintRepository';
+import ISprintRepository from '../../../IRepositories/ISprintRepository';
 import { Sprint } from '../entities/Sprint';
-import ICreateSprintDTO from '@modules/developer/dtos/ICreateSprintDTO';
-import IUpdateSprintDTO from '@modules/developer/dtos/IUpdateSprintDTO';
+import ICreateSprintDTO from '../../../dtos/ICreateSprintDTO';
+import IUpdateSprintDTO from '../../../dtos/IUpdateSprintDTO';
 
 class SprintRepository implements ISprintRepository {
 
