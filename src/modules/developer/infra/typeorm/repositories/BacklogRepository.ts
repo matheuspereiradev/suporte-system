@@ -28,7 +28,7 @@ class BacklogRepository implements IBacklogRepository {
 
     public async create(data: ICreateBacklogDTO): Promise<Backlog> {
         const backlog = this.ormRepository.create(data);
-        console.log(data)
+        // console.log(data)
         await this.ormRepository.save(backlog);
         return backlog;
     }

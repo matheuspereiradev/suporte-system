@@ -1,14 +1,13 @@
-export default{
-    email:{
-        defaultEmail:"DOCE LAR <noreply@docelar.com.br>"
+export default {
+    email: {
+        defaultEmail: "WA SOLUTIONS <suporte@wasolutions.co/>"
     },
-    passwordRecovery:{
-        title:"Recuperação de senha",
-        model:"recoveryPassword.hbs",
-        recoveryLink:"http://localhost:8080/"
+    passwordRecovery: {
+        title: "Recuperação de senha",
+        model: "recoveryPassword.hbs",
     },
-    welcomeMail:{
-        title:"Bem vindo ao Lar doce lar",
-        model:"welcomeEmail.hbs",
+    welcomeMail: {
+        title: "Bem vindo ao Matemática Mil App",
+        model: "welcomeEmail.hbs",
     }
 }

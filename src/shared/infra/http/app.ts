@@ -43,12 +43,13 @@ io.on("connection", (socket: Socket) => {
 
     socket.on("disconnect", () => {
         console.log('caiu')
+        socket.removeAllListeners();
     })
 })
 
 app.use('/files', express.static(path.resolve(__dirname, "..", "..", "..", "..", "temp")));
 
-app.use(routes)
+app.use('/suportewa', routes)
 
 app.use(errors())
 app.use(

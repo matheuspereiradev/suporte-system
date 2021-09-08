@@ -21,37 +21,37 @@ class AuthUserService {
 
     constructor(
         @inject('UserRepository')
-        private repository:IUserRepository,
+        private repository: IUserRepository,
 
         @inject('HashProvider')
-        private hashProvider:IHashProvider
-    ){}
+        private hashProvider: IHashProvider
+    ) { }
 
     async authenticate({ email, password }: Auth): Promise<ReturnUserAuth> {
-        
-        const user = await this.repository.findByEmail(email);
 
+        const user = await this.repository.findByEmail(email);
         if (!user) {
-            throw new Erro("Email or password invalid",1003, 401);
+            throw new Erro("Email or password invalid", 1003, 401);
         }
 
         const passwordMatch = await this.hashProvider.compareHash(password, user.password);
+        // console.log(passwordMatch)
         if (!passwordMatch) {
-            throw new Erro("Email or password invalid",1004, 401);
+            throw new Erro("Email or password invalid", 1004, 401);
         }
 
         const { expireIn, secret } = authConfig.jwt;
 
         const token = sign(
             {
-                email:user.email,
-                name:user.name,
-                company:user.idCompany,
-                isAdmin:user.admin
+                email: user.email,
+                name: user.name,
+                company: user.idCompany,
+                isAdmin: user.admin
             }, secret, {
-                subject: user.id,
-                expiresIn: expireIn,
-            });
+            subject: user.id,
+            expiresIn: expireIn,
+        });
 
         return {
             user,
