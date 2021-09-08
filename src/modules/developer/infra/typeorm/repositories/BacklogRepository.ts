@@ -34,6 +34,7 @@ class BacklogRepository implements IBacklogRepository {
         backlog.description = data.description;
         backlog.idResponsable = data.idResponsable;
         backlog.title = data.title;
+        backlog.domain = data.domain;
         delete backlog.responsable
         await this.ormRepository.save(backlog);
         return backlog;

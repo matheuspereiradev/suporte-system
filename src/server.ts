@@ -1,4 +1,4 @@
-import { http } from 'shared/infra/http/app';
+import { http } from './shared/infra/http/app';
 
 // app.listen(3030,()=>{
 //     console.log("Running");

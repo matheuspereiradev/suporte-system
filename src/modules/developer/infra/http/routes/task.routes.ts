@@ -6,7 +6,7 @@ const routesTask = Router();
 const taskController = new TaskController();
 
 routesTask.get('/', ensureAuthenticated, taskController.show);
-// routesTask.get('/find/:id', ensureAuthenticated, taskController.find);
+routesTask.get('/find/:id', ensureAuthenticated, taskController.find);
 routesTask.post('/', ensureAuthenticated, taskController.create);
 routesTask.put('/:id', ensureAuthenticated, taskController.update);
 routesTask.patch('/move/:id', ensureAuthenticated, taskController.move);

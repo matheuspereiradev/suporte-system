@@ -5,6 +5,7 @@ import { CreateTaskService } from '../services/CreateTaskService';
 import { DeleteTaskService } from '../services/DeleteTaskService';
 import { MoveTaskService } from '../services/MoveTaskService';
 import { UpdateTaskService } from '../services/UpdateTaskService';
+import TaskView from '../views/TaskView';
 
 
 class TaskController {
@@ -15,12 +16,12 @@ class TaskController {
         return response.status(200).json(all);
     }
 
-    // async find(request: Request, response: Response) {
-    //     const id = request.params.id;
-    //     const sprintRepository = new SprintRepository();
-    //     const all = await sprintRepository.findByID(Number(id))
-    //     return response.status(200).json(all);
-    // }
+    async find(request: Request, response: Response) {
+        const id = request.params.id;
+        const taskRepository = new TaskRepository();
+        const task = await taskRepository.findByID(Number(id))
+        return response.status(200).json(TaskView.render(task));
+    }
 
     async create(request: Request, response: Response) {
         const idCreator = request.user.id;

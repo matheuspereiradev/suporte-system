@@ -5,6 +5,7 @@ import { ChangeBacklogOpenedStatusService } from '../services/ChangeBacklogOpene
 import { CreateBacklogService } from '../services/CreateBacklogService';
 import { DeleteBacklogService } from '../services/DeleteBacklogService';
 import { UpdateBacklogService } from '../services/UpdateBacklogService';
+import BacklogView from '../views/BacklogView';
 
 
 class BacklogController {
@@ -18,15 +19,16 @@ class BacklogController {
         return response.status(200).json(all);
     }
 
-    // async find(request: Request, response: Response) {
+    async find(request: Request, response: Response) {
 
-    //     const id = request.params.id;
-    //     const sprintRepository = new SprintRepository();
+        const id = request.params.id;
+        const backlogRepository = new BacklogRepository();
 
-    //     const all = await sprintRepository.findByID(Number(id))
+        const backlog = await backlogRepository.findByID(Number(id));
 
-    //     return response.status(200).json(all);
-    // }
+        return response.status(200).json(BacklogView.render(backlog));
+
+    }
 
     async create(request: Request, response: Response) {
         const { title, description, idSprint, idResponsable, domain } = request.body;
